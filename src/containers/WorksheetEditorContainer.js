@@ -5,10 +5,16 @@ import { connect } from 'react-redux';
 
 import * as workSheetActions from '../actions/workSheetActions';
 
+import WorkSheetEditorSidebar from '../components/WorkSheetEditorSidebar';
+import WorkSheetEditorWorkSpace from '../components/WorkSheetEditorWorkSpace';
+
 class WorksheetEditor extends Component {
   render() {
     return (
-      <div>WorksheetEditor</div>
+      <div>
+        <WorkSheetEditorSidebar />
+        <WorkSheetEditorWorkSpace />
+      </div>
     );
   }
 }
