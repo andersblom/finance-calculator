@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({});
+import { worksheet } from './worksheetReducer';
+
+const rootReducer = combineReducers({ worksheet });
 
 export default rootReducer;
