@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -9,9 +10,12 @@ import Header from '../components/Header';
 
 class AppContainer extends Component {
   render() {
+    // This should be determined by Redux
+    const isUserAuthenticated = false;
+
     return (
       <div className="AppContainer">
-        <Header />
+        <Header isLoggedIn={isUserAuthenticated} />
       </div>
     );
   }

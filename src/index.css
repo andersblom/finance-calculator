@@ -9,9 +9,12 @@ body {
 /* CSS Vars */
 :root {
   /* Colors */
+    /* Global */
+    --color__primary: #245eff;
+
     /* Header */
-    --header__link: #4a5060;
-    --header__link--hover: #9da2af;
+    --header__link: #969ba0;
+    --header__link--hover: var(--color__primary);
   
   /* Animation properties */
     /* Timing */

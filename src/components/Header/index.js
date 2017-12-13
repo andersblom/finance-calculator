@@ -10,27 +10,31 @@ const Header = (props) => {
     <header>
       <div className="app__logo">
         <span className="emoji__logo" role="img" aria-label="Money with wings">💸</span>
-        <div className="app__logo__text">Financial.ly</div>
+        <div className="app__logo__text">Bookkbr</div>
       </div>
-      {
-        isLoggedIn
-        ?
-          <nav className="appNav">
+      <nav className="appNav">
+        {
+          isLoggedIn
+          ?
             <ul>
-              <li><Link to="/">Docs</Link></li>
-              <li><Link to="/">Account</Link></li>
-              <li><Link to="/">Log out</Link></li>
+              <li><Link to="/docs">Docs</Link></li>
+              <li><Link to="/user/account">Account</Link></li>
+              <li><Link to="/user/logout">Log out</Link></li>
             </ul>
-          </nav>
-        :
-          null
-      }
+          :
+            <ul>
+              <li><Link to="/docs">Docs</Link></li>
+              <li><Link to="/login">Log in</Link></li>
+              <li><Link to="/signup">Sign up</Link></li>
+            </ul>
+        }
+      </nav>
     </header>
   );
 };
 
 Header.defaultProps = {
-  isLoggedIn: true, // Should be false after css/markup is done
+  isLoggedIn: false, // Should be false after css/markup is done
 };
 
 Header.propTypes = {

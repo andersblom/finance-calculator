@@ -2,12 +2,12 @@ header {
   background-color: white;
   border-bottom-color: #eeeeee;
   border-bottom-style: solid;
-  border-bottom-width: 2px;
+  border-bottom-width: 1px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 2em;
   height: 70px;
   font-family: 'Roboto', sans-serif;
 }
@@ -45,9 +45,15 @@ header ul li a:hover {
 
 .app__logo__text {
   text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: var(--color__primary);
 }
 
 .app__logo .emoji__logo {
-  margin-right: 1em;
+  margin-right: 0.5em;
   display: block;
+  cursor: default;
+  font-size: 26px;
+  margin-top: 4px;
 }
