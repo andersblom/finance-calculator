@@ -1,5 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* CSS Vars */
+:root {
+  /* Colors */
+    /* Header */
+    --header__link: #4a5060;
+    --header__link--hover: #9da2af;
+  
+  /* Animation properties */
+    /* Timing */
+    --animation__timing__global: 200ms;
+    
+    /* Easing curve */
+    --animation__easing__text: ease-in-out;
 }
