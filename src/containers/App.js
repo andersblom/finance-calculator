@@ -5,11 +5,14 @@ import { connect } from 'react-redux';
 
 import * as workSheetActions from '../actions/workSheetActions';
 
+import Header from '../components/Header';
 
-class AppComponent extends Component {
+class AppContainer extends Component {
   render() {
     return (
-      <div>Hi</div>
+      <div className="AppContainer">
+        <Header />
+      </div>
     );
   }
 }
@@ -24,6 +27,6 @@ const mapDispatchToProps = dispatch => (
   }, dispatch)
 );
 
-const App = connect(mapStateToProps, mapDispatchToProps)(AppComponent);
+const App = connect(mapStateToProps, mapDispatchToProps)(AppContainer);
 
 export default App;

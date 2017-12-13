@@ -11,7 +11,7 @@ import './index.css';
 
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(
+ReactDOM.render( //eslint-disable-line
   <Provider store={store}>
     <Router>
       <App />
