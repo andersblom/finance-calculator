@@ -11,6 +11,7 @@ body {
   /* Colors */
     /* Global */
     --color__primary: #245eff;
+    --bright_gray: #eeeeee;
 
     /* Header */
     --header__link: #969ba0;

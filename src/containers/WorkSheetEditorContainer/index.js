@@ -14,11 +14,11 @@ import './WorksheetEditor.css';
 class WorksheetEditor extends Component {
   render() {
     const { items, title } = this.props.worksheet;
-    const { changeWorksheetTitle } = this.props;
+    const { changeWorksheetTitle, addBudgetItem } = this.props;
     return (
       <div className="WorksheetEditorWorkSpace__container">
         <WorkSpaceHeader changeWorksheetTitle={changeWorksheetTitle} title={title} />
-        <BudgetItems items={items} />
+        <BudgetItems addBudgetItem={addBudgetItem} items={items} />
       </div>
     );
   }
@@ -27,6 +27,7 @@ class WorksheetEditor extends Component {
 WorksheetEditor.propTypes = {
   worksheet: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
   changeWorksheetTitle: PropTypes.func.isRequired,
+  addBudgetItem: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

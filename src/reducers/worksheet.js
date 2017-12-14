@@ -1,4 +1,4 @@
-import { CHANGE_WORKSHEET_TITLE } from '../actions/actionTypes';
+import { CHANGE_WORKSHEET_TITLE, ADD_BUDGET_ITEM } from '../actions/actionTypes';
 
 const initialState = {
   title: 'My awesome worksheet',
@@ -39,6 +39,18 @@ export const worksheet = (state = initialState, action) => {
         ...state,
         title: action.title,
       };
+    case ADD_BUDGET_ITEM:
+      return Object.assign({}, {
+        ...state,
+        items: [
+          ...state.items,
+          {
+            name: action.name,
+            amount: action.amount,
+            isExpense: action.isExpense,
+          },
+        ],
+      });
     default:
       return state;
   }
