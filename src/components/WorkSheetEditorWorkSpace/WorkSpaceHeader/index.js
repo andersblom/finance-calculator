@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 import './WorkSpaceHeader.css';
 
+const temporaryTitle = 'Your title here';
+
 export default class WorkSpaceHeader extends Component {
   constructor() {
     super();
     this.state = {
       focussed: false,
-      inputValue: 'Your title here',
+      inputValue: temporaryTitle,
     };
 
     this.handleFocusIn = this.handleFocusIn.bind(this);
@@ -30,16 +32,23 @@ export default class WorkSpaceHeader extends Component {
       this.titleInput.value = '';
       // But, if the input is the temporary 'Your title here',
       // then leave the input empty
-      if (tempVal !== 'Your title here') {
+      if (tempVal !== temporaryTitle) {
         this.titleInput.value = tempVal;
       }
     });
   }
 
   handleFocusOut() {
-    this.setState({
-      focussed: false,
-    });
+    if (this.titleInput.value === temporaryTitle) {
+      this.setState({
+        focussed: false,
+        inputValue: temporaryTitle,
+      });
+    } else {
+      this.setState({
+        focussed: false,
+      });
+    }
   }
 
   handleChange(e) {
@@ -59,7 +68,7 @@ export default class WorkSpaceHeader extends Component {
   render() {
     const isFocussed = this.state.focussed;
     return (
-      <form onSubmit={this.handleSubmit} className={`WorkSpaceHeader__container ${isFocussed ? 'is-active' : ''}`}>
+      <form onSubmit={this.handleSubmit} className={`workSpaceHeader__container ${isFocussed ? 'is-active' : ''}`}>
         {
           isFocussed
           ?
@@ -77,9 +86,11 @@ export default class WorkSpaceHeader extends Component {
         {
           isFocussed
           ? null
-          : <button onClick={this.handleFocusIn}>Edit</button>
+          :
+          <button className="editButton" onClick={this.handleFocusIn}>
+            <span role="img" aria-label="Writing hand">✍️</span>
+          </button>
         }
-        <div className="bottom__border" />
       </form>
     );
   }

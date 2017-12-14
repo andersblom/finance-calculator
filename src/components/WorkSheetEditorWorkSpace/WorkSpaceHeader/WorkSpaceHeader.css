@@ -1,12 +1,35 @@
-.WorkSpaceHeader {
-  font-size: 46px;
+.workSpaceHeader__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.workSpaceHeader__container input, .workSpaceHeader__container h1 {
   box-shadow: none;
   border: none;
+  margin: 0;
+  font-weight: 400;
+  max-width: 100%;
 }
 
-.bottom__border {
-  width: 50px;
-  border-bottom: 1px solid grey;
+.workSpaceHeader__container input {
+  font-size: 48px;
+  color: grey;
+  width: 100%;
+  font-style: italic;
+}
+
+.workSpaceHeader__container h1 {
+  font-size: 46px;
+}
+
+.workSpaceHeader__container .editButton {
+  margin: 0 0 -10px 1em;
+  font-size: 20px;
+}
+
+.workSpaceHeader__container.is-active .bottom__border {
+  margin-top: 0.4em;
+  border-bottom: 3px solid grey;
 }
 
 input:focus {outline:0;}
