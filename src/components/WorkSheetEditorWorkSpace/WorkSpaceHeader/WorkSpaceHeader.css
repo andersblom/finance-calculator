@@ -4,7 +4,8 @@
   border: none;
 }
 
-.WorkSpaceHeader.is-active {
+.bottom__border {
+  width: 50px;
   border-bottom: 1px solid grey;
 }
 

@@ -10,7 +10,7 @@ const Header = (props) => {
     <header>
       <div className="app__logo">
         <span className="emoji__logo" role="img" aria-label="Money with wings">💸</span>
-        <div className="app__logo__text">Bookkbr</div>
+        <div className="app__logo__text">...</div>
       </div>
       <nav className="appNav">
         {
