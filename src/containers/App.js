@@ -4,9 +4,9 @@ import { Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as workSheetActions from '../actions/workSheetActions';
+import * as worksheetActions from '../actions/worksheetActions';
 
-import WorkSheetEditorContainer from './WorkSheetEditorContainer';
+import WorksheetEditorContainer from './WorksheetEditorContainer';
 import Header from '../components/Header';
 
 class AppContainer extends Component {
@@ -17,7 +17,7 @@ class AppContainer extends Component {
     return (
       <div className="AppContainer">
         <Header isLoggedIn={isUserAuthenticated} />
-        <Route exact path="/" component={WorkSheetEditorContainer} />
+        <Route exact path="/" component={WorksheetEditorContainer} />
       </div>
     );
   }
@@ -29,7 +29,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    worksheet: workSheetActions,
+    worksheet: worksheetActions,
   }, dispatch)
 );
 

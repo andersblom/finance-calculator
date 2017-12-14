@@ -1,3 +1,5 @@
+import { CHANGE_WORKSHEET_TITLE } from '../actions/actionTypes';
+
 const initialState = {
   title: 'My awesome worksheet',
   items: [
@@ -29,8 +31,14 @@ const initialState = {
   ],
 };
 
-exports.worksheet = (state = initialState, action) => {
+export const worksheet = (state = initialState, action) => {
   switch (action.type) {
+    case CHANGE_WORKSHEET_TITLE:
+      console.log(action.title);
+      return {
+        ...state,
+        title: action.title,
+      };
     default:
       return state;
   }

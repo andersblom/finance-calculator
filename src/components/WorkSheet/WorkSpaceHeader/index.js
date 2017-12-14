@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './WorkSpaceHeader.css';
 
@@ -7,9 +8,9 @@ const temporaryTitle = 'Your title here';
 export default class WorkSpaceHeader extends Component {
   constructor() {
     super();
+
     this.state = {
       focussed: false,
-      inputValue: temporaryTitle,
     };
 
     this.handleFocusIn = this.handleFocusIn.bind(this);
@@ -40,9 +41,9 @@ export default class WorkSpaceHeader extends Component {
 
   handleFocusOut() {
     if (this.titleInput.value === temporaryTitle) {
+      this.props.changeWorksheetTitle(temporaryTitle);
       this.setState({
         focussed: false,
-        inputValue: temporaryTitle,
       });
     } else {
       this.setState({
@@ -52,21 +53,20 @@ export default class WorkSpaceHeader extends Component {
   }
 
   handleChange(e) {
-    this.setState({
-      inputValue: e.target.value,
-    });
+    this.props.changeWorksheetTitle(e.target.value);
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.changeWorksheetTitle(this.titleInput.value);
     this.setState({
-      inputValue: this.titleInput.value,
       focussed: false,
     });
   }
 
   render() {
     const isFocussed = this.state.focussed;
+    const { title } = this.props;
     return (
       <form onSubmit={this.handleSubmit} className={`workSpaceHeader__container ${isFocussed ? 'is-active' : ''}`}>
         {
@@ -77,11 +77,11 @@ export default class WorkSpaceHeader extends Component {
               placeholder="Enter your title"
               onBlur={this.handleFocusOut}
               onChange={this.handleChange}
-              value={this.state.inputValue}
+              value={title}
               ref={(input) => { this.titleInput = input; }}
             />
           :
-            <h1>{this.state.inputValue}</h1>
+            <h1>{title}</h1>
         }
         {
           isFocussed
@@ -95,3 +95,12 @@ export default class WorkSpaceHeader extends Component {
     );
   }
 }
+
+WorkSpaceHeader.propTypes = {
+  title: PropTypes.string,
+  changeWorksheetTitle: PropTypes.func.isRequired,
+};
+
+WorkSpaceHeader.defaultProps = {
+  title: temporaryTitle,
+};

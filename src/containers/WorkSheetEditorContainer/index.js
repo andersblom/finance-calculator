@@ -1,36 +1,42 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as workSheetActions from '../../actions/workSheetActions';
+import * as worksheetActions from '../../actions/worksheetActions';
 
-import WorkSpaceHeader from '../../components/WorkSheet/WorkSpaceHeader';
-import BudgetItems from '../../components/WorkSheet/BudgetItems';
+import WorkSpaceHeader from '../../components/Worksheet/WorkSpaceHeader';
+import BudgetItems from '../../components/Worksheet/BudgetItems';
 
-import './WorkSheetEditor.css';
+import './WorksheetEditor.css';
 
 class WorksheetEditor extends Component {
   render() {
+    const { items, title } = this.props.worksheet;
+    const { changeWorksheetTitle } = this.props;
     return (
-      <div className="WorkSheetEditorWorkSpace__container">
-        <WorkSpaceHeader />
-        <BudgetItems />
+      <div className="WorksheetEditorWorkSpace__container">
+        <WorkSpaceHeader changeWorksheetTitle={changeWorksheetTitle} title={title} />
+        <BudgetItems items={items} />
       </div>
     );
   }
 }
+
+WorksheetEditor.propTypes = {
+  worksheet: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  changeWorksheetTitle: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   worksheet: state.worksheet,
 });
 
 const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    worksheet: workSheetActions,
-  }, dispatch)
+  bindActionCreators(worksheetActions, dispatch)
 );
 
-const WorkSheetEditorContainer = connect(mapStateToProps, mapDispatchToProps)(WorksheetEditor);
+const WorksheetEditorContainer = connect(mapStateToProps, mapDispatchToProps)(WorksheetEditor);
 
-export default WorkSheetEditorContainer;
+export default WorksheetEditorContainer;
