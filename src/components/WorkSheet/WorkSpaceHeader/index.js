@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 
 import './WorkSpaceHeader.css';
 
-const temporaryTitle = 'Your title here';
+const temporaryTitle = 'Untitled worksheet';
 
 export default class WorkSpaceHeader extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       focussed: false,
+      inputValue: props.title,
     };
 
     this.handleFocusIn = this.handleFocusIn.bind(this);
@@ -39,29 +40,33 @@ export default class WorkSpaceHeader extends Component {
     });
   }
 
-  handleFocusOut() {
-    if (this.titleInput.value === temporaryTitle) {
+  submitTitleInput() {
+    if (this.titleInput.value === temporaryTitle || this.titleInput.value.length === 0) {
       this.props.changeWorksheetTitle(temporaryTitle);
       this.setState({
         focussed: false,
       });
     } else {
+      this.props.changeWorksheetTitle(this.titleInput.value);
       this.setState({
         focussed: false,
       });
     }
   }
 
+  handleFocusOut() {
+    this.submitTitleInput();
+  }
+
   handleChange(e) {
-    this.props.changeWorksheetTitle(e.target.value);
+    this.setState({
+      inputValue: e.target.value,
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.changeWorksheetTitle(this.titleInput.value);
-    this.setState({
-      focussed: false,
-    });
+    this.submitTitleInput();
   }
 
   render() {
@@ -77,7 +82,7 @@ export default class WorkSpaceHeader extends Component {
               placeholder="Enter your title"
               onBlur={this.handleFocusOut}
               onChange={this.handleChange}
-              value={title}
+              value={this.state.inputValue}
               ref={(input) => { this.titleInput = input; }}
             />
           :
