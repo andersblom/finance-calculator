@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { worksheet } from './worksheetReducer';
+import { worksheet } from './worksheet';
 
 const rootReducer = combineReducers({ worksheet });
 

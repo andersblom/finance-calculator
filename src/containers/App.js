@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import * as workSheetActions from '../actions/workSheetActions';
 
-import WorksheetEditorContainer from './WorksheetEditorContainer';
+import WorkSheetEditorContainer from './WorkSheetEditorContainer';
 import Header from '../components/Header';
 
 class AppContainer extends Component {
@@ -17,7 +17,7 @@ class AppContainer extends Component {
     return (
       <div className="AppContainer">
         <Header isLoggedIn={isUserAuthenticated} />
-        <Route exact path="/" component={WorksheetEditorContainer} />
+        <Route exact path="/" component={WorkSheetEditorContainer} />
       </div>
     );
   }
