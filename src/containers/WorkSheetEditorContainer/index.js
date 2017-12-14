@@ -25,7 +25,7 @@ class WorksheetEditor extends Component {
 }
 
 WorksheetEditor.propTypes = {
-  worksheet: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  worksheet: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
   changeWorksheetTitle: PropTypes.func.isRequired,
 };
 
