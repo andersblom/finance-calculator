@@ -1,9 +1,7 @@
 import React from 'react';
 
-const WorkSheetEditorSidebar = (props) => {
-  return (
-    <div>sidebar</div>
-  );
-};
+const WorkSheetEditorSidebar = () => (
+  <div>sidebar</div>
+);
 
 export default WorkSheetEditorSidebar;

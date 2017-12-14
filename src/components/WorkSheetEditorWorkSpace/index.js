@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const WorkSheetEditorWorkSpace = () => {
-  return (
-    <div>
-      WorkSheetEditorWorkSpace
-    </div>
-  );
-};
+import WorkSpaceHeader from './WorkSpaceHeader';
 
-export default WorkSheetEditorWorkSpace;
+import './WorkSheetEditorWorkSpace.css';
+
+export default class WorkSheetEditorWorkSpace extends Component {
+  render() {
+    return (
+      <div className="WorkSheetEditorWorkSpace__container">
+        <WorkSpaceHeader />
+      </div>
+    );
+  }
+}

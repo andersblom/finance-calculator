@@ -1,0 +1,11 @@
+.WorkSpaceHeader {
+  font-size: 46px;
+  box-shadow: none;
+  border: none;
+}
+
+.WorkSpaceHeader.is-active {
+  border-bottom: 1px solid grey;
+}
+
+input:focus {outline:0;}
