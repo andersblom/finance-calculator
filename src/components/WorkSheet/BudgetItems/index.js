@@ -28,7 +28,7 @@ export default class BudgetItems extends Component {
   handleSubmitNewBudgetItem(e) {
     e.preventDefault();
     const name = e.target.name.value;
-    const amount = parseInt(e.target.amount.value);
+    const amount = parseInt(e.target.amount.value, 10);
     const isExpense = e.target.isExpense !== undefined;
 
     this.props.addBudgetItem(name, amount, isExpense);

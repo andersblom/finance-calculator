@@ -6,6 +6,8 @@ import './SingleBudgetListItem.css';
 const SingleBudgetListItem = ({ item }) => (
   <div className="listItem__entry__container">
     <div className="name">{item.name}</div>
+    <div className="amount">{item.amount}</div>
+    <div className="actions"><button>Edit</button><button>Delete</button></div>
   </div>
 );
 

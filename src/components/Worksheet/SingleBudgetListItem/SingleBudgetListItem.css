@@ -1,4 +1,6 @@
 .listItem__entry__container {
+  display: grid;
+  grid-template-columns: 4fr minmax(150px, 1fr) minmax(200px, 1fr);
   padding: 15px 20px; 
   border-bottom: 2px solid var(--bright_gray);
 }
