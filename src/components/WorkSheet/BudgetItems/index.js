@@ -31,8 +31,8 @@ export default class BudgetItems extends Component {
   }
   handleSubmitNewBudgetItem(e) {
     e.preventDefault();
-    const name = e.target.name.value;
-    const amount = parseInt(e.target.amount.value, 10);
+    const name = e.target.name.value.length === 0 ? 'Something mc somethingson' : e.target.name.value;
+    const amount = Number.isNaN(parseInt(e.target.amount.value, 10)) ? 0 : parseInt(e.target.amount.value, 10);
     const isExpense = e.target.isExpense !== undefined;
 
     this.props.addBudgetItem(name, amount, isExpense);
