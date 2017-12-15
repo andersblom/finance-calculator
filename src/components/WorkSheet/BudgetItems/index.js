@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import SingleBudgetListItem from '../SingleBudgetListItem';
 
+import './BudgetItems.css';
+
 function renderListOfItems(items) {
   return items.map((item) => {
     // This will be the key-prop for the item
@@ -38,7 +40,7 @@ export default class BudgetItems extends Component {
     const expenses = this.props.items.filter(item => item.expense === true);
 
     return (
-      <div>
+      <div className="budgetItems__container">
         <div>
           <h2>Income</h2>
           <div>{renderListOfItems(income)}</div>
@@ -54,8 +56,8 @@ export default class BudgetItems extends Component {
           <form onSubmit={this.handleSubmitNewBudgetItem}>
             <input type="text" name="name" placeholder="new income item" />
             <input type="text" name="amount" placeholder="amount" />
-            <input type="checkbox" name="isExpense" checked hidden readOnly />
             <input type="submit" />
+            <input type="checkbox" name="isExpense" checked hidden readOnly />
           </form>
         </div>
       </div>
