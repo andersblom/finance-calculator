@@ -34,23 +34,22 @@ const initialState = {
 export const worksheet = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_WORKSHEET_TITLE:
-      console.log(action.title);
       return {
         ...state,
         title: action.title,
       };
     case ADD_BUDGET_ITEM:
-      return Object.assign({}, {
-        ...state,
+      return {
+        title: state.title,
         items: [
-          ...state.items,
+          ...state.items.slice(0, state.items.length),
           {
             name: action.name,
             amount: action.amount,
-            isExpense: action.isExpense,
+            expense: action.isExpense,
           },
         ],
-      });
+      };
     default:
       return state;
   }
