@@ -1,6 +1,38 @@
 .budgetItems__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  grid-column-gap: 30px;
-  
+  grid-column-gap: 30px; 
+}
+
+.budgetItems__category {
+  margin-bottom: 30px;
+}
+
+.budgetItems__category form {
+  display: grid;
+  grid-template-columns: minmax(200px, 4fr) minmax(100px, 1fr) minmax(150px, 1fr);
+}
+
+.budgetItems__addNew.name, .budgetItems__addNew.amount, .budgetItems__addNew.submit {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 15px 0;
+  font-size: 16px;
+  box-shadow: none;
+  border: none;
+}
+
+.budgetItems__addNew.amount {
+  text-align: right;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.budgetItems__addNew .hiddenCheckbox {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
 }

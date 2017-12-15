@@ -6,15 +6,17 @@ import SingleBudgetListItem from '../SingleBudgetListItem';
 import './BudgetItems.css';
 
 function renderListOfItems(items) {
-  return items.map((item) => {
+  return items.map((item, index) => {
     // This will be the key-prop for the item
-    const keyProp = item.name
+    let keyProp = item.name
       .toLowerCase()
       .trim()
       // Removing spaces
       .replace(' ', '')
       // Removing special characters with regexp
       .replace(/[^a-zA-Z ]/g, '');
+
+    keyProp = `${keyProp}${index}`;
 
     return (
       <SingleBudgetListItem key={keyProp} item={item} />
@@ -41,23 +43,23 @@ export default class BudgetItems extends Component {
 
     return (
       <div className="budgetItems__container">
-        <div>
+        <div className="budgetItems__category">
           <h2>Income</h2>
           <div>{renderListOfItems(income)}</div>
           <form onSubmit={this.handleSubmitNewBudgetItem}>
-            <input type="text" name="name" placeholder="new income item" />
-            <input type="text" name="amount" placeholder="amount" />
-            <input type="submit" />
+            <input type="text" className="budgetItems__addNew name" name="name" placeholder="new income item" />
+            <input type="number" className="budgetItems__addNew amount" name="amount" placeholder="amount" />
+            <input type="submit" className="budgetItems__addNew submit" />
           </form>
         </div>
-        <div>
+        <div className="budgetItems__category">
           <h2>Expenses</h2>
           <div>{renderListOfItems(expenses)}</div>
           <form onSubmit={this.handleSubmitNewBudgetItem}>
-            <input type="text" name="name" placeholder="new income item" />
-            <input type="text" name="amount" placeholder="amount" />
-            <input type="submit" />
-            <input type="checkbox" name="isExpense" checked hidden readOnly />
+            <input type="text" className="budgetItems__addNew name" name="name" placeholder="new income item" />
+            <input type="number" className="budgetItems__addNew amount" name="amount" placeholder="amount" />
+            <input type="submit" className="budgetItems__addNew submit" />
+            <input type="checkbox" className="budgetItems__addNew hiddenCheckbox" name="isExpense" checked hidden readOnly />
           </form>
         </div>
       </div>

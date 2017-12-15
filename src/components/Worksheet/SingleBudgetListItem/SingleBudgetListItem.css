@@ -3,9 +3,9 @@
   grid-template-columns: minmax(200px, 4fr) minmax(100px, 1fr) minmax(150px, 1fr);
   padding: 15px 0;
   border-bottom: 2px solid var(--bright_gray);
-  margin-bottom: 15px;
+  font-size: 16px;
 }
-
+ 
 .listItem__entry__container .amount, .listItem__entry__container .actions {
   text-align: right;
 }
