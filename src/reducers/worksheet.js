@@ -39,17 +39,16 @@ export const worksheet = (state = initialState, action) => {
         title: action.title,
       };
     case ADD_BUDGET_ITEM:
-      return {
-        title: state.title,
+      return Object.assign({}, state, {
         items: [
-          ...state.items.slice(0, state.items.length),
+          ...state.items,
           {
             name: action.name,
             amount: action.amount,
             expense: action.isExpense,
           },
         ],
-      };
+      });
     default:
       return state;
   }
