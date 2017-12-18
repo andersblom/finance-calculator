@@ -17,5 +17,4 @@ export const editBudgetItem = (id, name, amount, isExpense) => ({
   id,
   name,
   amount,
-  isExpense,
 });
