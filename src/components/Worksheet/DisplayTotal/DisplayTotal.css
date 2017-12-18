@@ -1,0 +1,12 @@
+.totalAmount {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.totalAmount .pos {
+  color: green;
+}
+
+.totalAmount .neg {
+  color: red;
+}
