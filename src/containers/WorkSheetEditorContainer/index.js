@@ -12,6 +12,18 @@ import BudgetItems from '../../components/Worksheet/BudgetItems';
 import './WorksheetEditor.css';
 
 class WorksheetEditor extends Component {
+  calculateTotal() {
+    const { items } = this.props.worksheet;
+    const expenses = items.filter(item => item.expense === true);
+    const income = items.filter(item => item.expense === false);
+
+    const expensesTotal = expenses.reduce((prev, curr) => prev + curr.amount, 0);
+    const incomeTotal = income.reduce((prev, curr) => prev + curr.amount, 0);
+
+    const calculatedTotal = incomeTotal - expensesTotal;
+
+    return calculatedTotal;
+  }
   render() {
     const { items, title } = this.props.worksheet;
     const { changeWorksheetTitle, addBudgetItem } = this.props;
@@ -19,6 +31,7 @@ class WorksheetEditor extends Component {
       <div className="WorksheetEditorWorkSpace__container">
         <WorkSpaceHeader changeWorksheetTitle={changeWorksheetTitle} title={title} />
         <BudgetItems addBudgetItem={addBudgetItem} items={items} />
+        <div>Total: {this.calculateTotal()}</div>
       </div>
     );
   }
