@@ -12,7 +12,7 @@ export const addBudgetItem = (name, amount, isExpense) => ({
   isExpense,
 });
 
-export const editBudgetItem = (id, name, amount, isExpense) => ({
+export const editBudgetItem = (id, name, amount) => ({
   type: EDIT_BUDGET_ITEM,
   id,
   name,

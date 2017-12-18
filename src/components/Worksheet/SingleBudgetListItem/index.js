@@ -79,6 +79,7 @@ SingleBudgetListItem.propTypes = {
     expense: PropTypes.bool.isRequired,
   }).isRequired,
   editBudgetItem: PropTypes.func.isRequired,
+  deleteBudgetItem: PropTypes.func.isRequired,
 };
 
 export default SingleBudgetListItem;
