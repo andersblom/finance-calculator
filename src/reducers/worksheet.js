@@ -59,8 +59,17 @@ export const worksheet = (state = initialState, action) => {
       });
 
     case EDIT_BUDGET_ITEM:
-      console.log(state, action);
-      return state;
+      return Object.assign({}, state, {
+        items: [
+          ...state.items.filter(i => i.id !== action.id),
+          {
+            ...state.items.filter(i => i.id === action.id)[0],
+            name: action.name,
+            amount: action.amount,
+            id: action.id,
+          },
+        ],
+      });
 
     default:
       return state;

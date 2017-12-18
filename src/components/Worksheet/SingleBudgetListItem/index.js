@@ -31,7 +31,8 @@ class SingleBudgetListItem extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.editBudgetItem(this.props.item.id, this.state.name, this.state.amount);
+    const amountAsInt = parseInt(this.state.amount, 10) || this.state.amount || 0;
+    this.props.editBudgetItem(this.props.item.id, this.state.name, amountAsInt);
     this.setState({
       editing: false,
     });
