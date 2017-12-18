@@ -14,16 +14,18 @@ import './WorksheetEditor.css';
 class WorksheetEditor extends Component {
   calculateTotal() {
     const { items } = this.props.worksheet;
-    const expenses = items.filter(item => item.expense === true);
-    const income = items.filter(item => item.expense === false);
+    const expenses = items
+      .filter(item => item.expense === true)
+      .reduce((prev, curr) => prev + curr.amount, 0);
+    const income = items
+      .filter(item => item.expense === false)
+      .reduce((prev, curr) => prev + curr.amount, 0);
 
-    const expensesTotal = expenses.reduce((prev, curr) => prev + curr.amount, 0);
-    const incomeTotal = income.reduce((prev, curr) => prev + curr.amount, 0);
-
-    const calculatedTotal = incomeTotal - expensesTotal;
+    const calculatedTotal = income - expenses;
 
     return calculatedTotal;
   }
+
   render() {
     const { items, title } = this.props.worksheet;
     const { changeWorksheetTitle, addBudgetItem } = this.props;
