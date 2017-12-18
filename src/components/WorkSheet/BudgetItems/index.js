@@ -6,22 +6,7 @@ import SingleBudgetListItem from '../SingleBudgetListItem';
 import './BudgetItems.css';
 
 function renderListOfItems(items) {
-  return items.map((item, index) => {
-    // This will be the key-prop for the item
-    let keyProp = item.name
-      .toLowerCase()
-      .trim()
-      // Removing spaces
-      .replace(' ', '')
-      // Removing special characters with regexp
-      .replace(/[^a-zA-Z ]/g, '');
-
-    keyProp = `${keyProp}${index}`;
-
-    return (
-      <SingleBudgetListItem key={keyProp} item={item} />
-    );
-  });
+  return items.map(item => <SingleBudgetListItem key={item.id} item={item} />);
 }
 
 export default class BudgetItems extends Component {
