@@ -24,8 +24,10 @@ export default class BudgetItems extends Component {
 
     if (isExpense === true) {
       this.expenseForm.reset();
+      this.expenseForm.name.focus();
     } else {
       this.incomeForm.reset();
+      this.incomeForm.name.focus();
     }
   }
 

@@ -8,6 +8,7 @@ import * as worksheetActions from '../../actions/worksheetActions';
 
 import WorkSpaceHeader from '../../components/Worksheet/WorkSpaceHeader';
 import BudgetItems from '../../components/Worksheet/BudgetItems';
+import DisplayTotal from '../../components/Worksheet/DisplayTotal';
 
 import './WorksheetEditor.css';
 
@@ -33,7 +34,7 @@ class WorksheetEditor extends Component {
       <div className="WorksheetEditorWorkSpace__container">
         <WorkSpaceHeader changeWorksheetTitle={changeWorksheetTitle} title={title} />
         <BudgetItems addBudgetItem={addBudgetItem} items={items} />
-        <div>Total: {this.calculateTotal()}</div>
+        <DisplayTotal total={this.calculateTotal()} />
       </div>
     );
   }
