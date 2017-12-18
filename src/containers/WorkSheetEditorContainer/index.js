@@ -29,11 +29,16 @@ class WorksheetEditor extends Component {
 
   render() {
     const { items, title } = this.props.worksheet;
-    const { changeWorksheetTitle, addBudgetItem, editBudgetItem } = this.props;
+    const {
+      changeWorksheetTitle,
+      addBudgetItem,
+      editBudgetItem,
+      deleteBudgetItem,
+    } = this.props;
     return (
       <div className="WorksheetEditorWorkSpace__container">
         <WorkSpaceHeader changeWorksheetTitle={changeWorksheetTitle} title={title} />
-        <BudgetItems editBudgetItem={editBudgetItem} addBudgetItem={addBudgetItem} items={items} />
+        <BudgetItems deleteBudgetItem={deleteBudgetItem} editBudgetItem={editBudgetItem} addBudgetItem={addBudgetItem} items={items} />
         <DisplayTotal total={this.calculateTotal()} />
       </div>
     );
@@ -45,6 +50,7 @@ WorksheetEditor.propTypes = {
   changeWorksheetTitle: PropTypes.func.isRequired,
   addBudgetItem: PropTypes.func.isRequired,
   editBudgetItem: PropTypes.func.isRequired,
+  deleteBudgetItem: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

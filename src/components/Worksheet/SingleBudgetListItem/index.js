@@ -51,7 +51,7 @@ class SingleBudgetListItem extends Component {
   }
 
   render() {
-    const { item } = this.props;
+    const { item, deleteBudgetItem } = this.props;
     const { editing } = this.state;
     return (
       editing
@@ -65,7 +65,7 @@ class SingleBudgetListItem extends Component {
           <div className="listItem__entry__container">
             <div className="name">{item.name}</div>
             <div className="amount">{item.amount}</div>
-            <div className="actions"><button onClick={this.handleEditClick}>Edit</button><button>Delete</button></div>
+            <div className="actions"><button onClick={this.handleEditClick}>Edit</button><button onClick={() => { deleteBudgetItem(item.id); }}>Delete</button></div>
           </div>
     );
   }

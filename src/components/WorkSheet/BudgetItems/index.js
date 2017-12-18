@@ -29,7 +29,7 @@ export default class BudgetItems extends Component {
   }
 
   renderListOfItems(items) {
-    return items.map(item => <SingleBudgetListItem editBudgetItem={this.props.editBudgetItem} key={item.id} item={item} />);
+    return items.map(item => <SingleBudgetListItem deleteBudgetItem={this.props.deleteBudgetItem} editBudgetItem={this.props.editBudgetItem} key={item.id} item={item} />);
   }
 
   render() {
@@ -66,6 +66,7 @@ BudgetItems.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object),
   addBudgetItem: PropTypes.func.isRequired,
   editBudgetItem: PropTypes.func.isRequired,
+  deleteBudgetItem: PropTypes.func.isRequired,
 };
 
 BudgetItems.defaultProps = {
