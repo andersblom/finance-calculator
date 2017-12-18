@@ -1,5 +1,5 @@
 import uuidv4 from 'uuid/v4';
-import { CHANGE_WORKSHEET_TITLE, ADD_BUDGET_ITEM } from '../actions/actionTypes';
+import { CHANGE_WORKSHEET_TITLE, ADD_BUDGET_ITEM, EDIT_BUDGET_ITEM } from '../actions/actionTypes';
 
 const initialState = {
   title: 'My awesome worksheet',
@@ -44,6 +44,7 @@ export const worksheet = (state = initialState, action) => {
         ...state,
         title: action.title,
       };
+
     case ADD_BUDGET_ITEM:
       return Object.assign({}, state, {
         items: [
@@ -56,6 +57,11 @@ export const worksheet = (state = initialState, action) => {
           },
         ],
       });
+
+    case EDIT_BUDGET_ITEM:
+      console.log(state, action);
+      return state;
+
     default:
       return state;
   }
