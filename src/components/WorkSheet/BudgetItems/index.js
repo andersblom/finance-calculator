@@ -29,7 +29,11 @@ export default class BudgetItems extends Component {
   }
 
   renderListOfItems(items) {
-    return items.map(item => <SingleBudgetListItem deleteBudgetItem={this.props.deleteBudgetItem} editBudgetItem={this.props.editBudgetItem} key={item.id} item={item} />);
+    if (items.length !== 0) {
+      return items.map(item => <SingleBudgetListItem deleteBudgetItem={this.props.deleteBudgetItem} editBudgetItem={this.props.editBudgetItem} key={item.id} item={item} />);
+    }
+
+    return <div className="budgetitems__noFieldAdded">Ow. It&apos;s pretty lonely here :(</div>;
   }
 
   render() {
