@@ -9,7 +9,6 @@ import * as worksheetActions from '../../actions/worksheetActions';
 import WorkSpaceHeader from '../../components/Worksheet/WorkSpaceHeader';
 import BudgetItems from '../../components/Worksheet/BudgetItems';
 import DisplayTotal from '../../components/Worksheet/DisplayTotal';
-import WorksheetPiechart from '../../components/Worksheet/WorksheetPiechart';
 
 import './WorksheetEditor.css';
 
