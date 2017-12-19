@@ -9,6 +9,7 @@ import * as worksheetActions from '../../actions/worksheetActions';
 import WorkSpaceHeader from '../../components/Worksheet/WorkSpaceHeader';
 import BudgetItems from '../../components/Worksheet/BudgetItems';
 import DisplayTotal from '../../components/Worksheet/DisplayTotal';
+import WorksheetPiechart from '../../components/Worksheet/WorksheetPiechart';
 
 import './WorksheetEditor.css';
 
@@ -40,6 +41,7 @@ class WorksheetEditor extends Component {
         <WorkSpaceHeader changeWorksheetTitle={changeWorksheetTitle} title={title} />
         <BudgetItems deleteBudgetItem={deleteBudgetItem} editBudgetItem={editBudgetItem} addBudgetItem={addBudgetItem} items={items} />
         <DisplayTotal total={this.calculateTotal()} />
+        <WorksheetPiechart items={items} />
       </div>
     );
   }
