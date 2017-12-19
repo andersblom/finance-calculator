@@ -11,7 +11,7 @@ export default class WorkSpaceHeader extends Component {
 
     this.state = {
       focussed: false,
-      inputValue: props.title,
+      inputValue: props.title !== null ? props.title : temporaryTitle,
     };
 
     this.handleFocusIn = this.handleFocusIn.bind(this);
@@ -71,7 +71,8 @@ export default class WorkSpaceHeader extends Component {
 
   render() {
     const isFocussed = this.state.focussed;
-    const { title } = this.props;
+    const title = this.props.title !== null ? this.props.title : temporaryTitle;
+
     return (
       <form onSubmit={this.handleSubmit} className={`workSpaceHeader__container ${isFocussed ? 'is-active' : ''}`}>
         {
