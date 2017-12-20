@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 	extended: true,
 }));
 
-mongoose.connect(app.settings.env === 'test' ? process.env.TEST_MONGO_URL : process.env.MONGO_URL, function (err) {
+mongoose.connect(app.settings.env === 'test' ? process.env.TEST_MONGO_URL : process.env.MONGO_URL, { useMongoClient: true }, function (err) {
 	if (err) {
 		console.log('🖥  🛑 Error connecting to the database. ' + err);
 	} else {

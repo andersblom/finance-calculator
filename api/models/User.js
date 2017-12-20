@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
 		trim: true,
 		unique: true,
 		lowercase: true,
-		validate: [validator.isEmail, 'invalid email']
+		validate: [{ validator: value => validator.isEmail(value), msg: 'Invalid email' }]
 	},
 	fullName: {
 		type: String,
