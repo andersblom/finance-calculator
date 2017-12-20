@@ -19,7 +19,7 @@
     "start": "yarn start:client",
     "start:server": "nodemon ./api/server.js",
     "start:client": "react-scripts start",
-    "test:server": "jest /api",
+    "test:server": "jest --watchAll /api",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
