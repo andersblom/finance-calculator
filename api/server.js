@@ -1,6 +1,7 @@
 require('dotenv').config({
 	path: './.env',
 });
+require('./models/User');
 
 
 const env = process.env.ENVIRONMENT || 'production';
