@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', apiController.checkApiStatus);
 router.post('/user/create', 
 	userController.validateUserInput,
-	// userController.createNewUser,
+	userController.createNewUser,
 	// authController.login,
 );
 

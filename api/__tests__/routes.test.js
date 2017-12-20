@@ -16,10 +16,19 @@ describe('Test API status', () => {
 	});
 });
 
+const testUser = {
+	fullName: 'Testy McTesterson',
+	email: 'test@example.com',
+	password: 'test',
+};
+
 describe('User functionality', () => {
 	test('It should create a user @ POST /user/create', () => {
-		return request(app).post('/user/create').then(res => {
+		return request(app).post('/user/create').send(testUser).then(res => {
 			expect(res.statusCode).toBe(200);
+			expect(res.body.fullName).toBe('Testy McTesterson');
+			expect(res.body.email).toBe('test@example.com');
+			expect(res.body.password).not.toBe('test');
 		});
 	});
 });
