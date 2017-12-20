@@ -7,10 +7,14 @@ const authController = require('../controllers/authController');
 const router = express.Router();
 
 router.get('/', apiController.checkApiStatus);
+
 router.post('/user/create', 
 	handleAsync(userController.validateUserInput),
-	handleAsync(userController.createNewUser),
-	handleAsync(authController.login),
+	handleAsync(userController.createNewUser)
+);
+
+router.post('/user/login', 
+	handleAsync(authController.login)
 );
 
 module.exports = router;
