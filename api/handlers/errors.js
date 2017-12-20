@@ -14,7 +14,7 @@ exports.sendClientErrors = (err, req, res, next) => {
 	}
 };
 
-exports.catchAllErrors = (err, req, res, next) => {
+exports.catchAllErrors = (err, req, res, next) => { //eslint-disable-line no-unused-vars
 	res.status(err.status || 500);
 	console.log(err);
 	res.json({
