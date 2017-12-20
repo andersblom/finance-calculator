@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+
 const routes = require('./routes');
+const errorHandlers = require('./handlers/errors');
 
 const app = express();
 
@@ -15,5 +17,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/', routes);
+
+app.use(errorHandlers.logErrors);
+app.use(errorHandlers.sendClientErrors);
+app.use(errorHandlers.catchAllErrors);
 
 module.exports = app;
