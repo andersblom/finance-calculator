@@ -6,6 +6,6 @@ const routes = require('./routes');
 const app = express();
 
 
-app.use('/api', routes);
+app.use('/', routes);
 
 module.exports = app;

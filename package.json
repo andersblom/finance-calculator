@@ -17,7 +17,7 @@
   },
   "scripts": {
     "start": "yarn start:client",
-    "start:server": "nodemon ./api/start.js",
+    "start:server": "nodemon ./api/server.js",
     "start:client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
