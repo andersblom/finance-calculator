@@ -1,7 +1,7 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-
 const routes = require('./routes');
 const errorHandlers = require('./handlers/errors');
 
@@ -15,6 +15,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true,
 }));
+
+mongoose.connect(app.settings.env === 'test' ? process.env.TEST_MONGO_URL : process.env.MONGO_URL, function (err) {
+	if (err) {
+		console.log('🖥  🛑 Error connecting to the database. ' + err);
+	} else {
+		console.log('db connected');
+	}
+});
+mongoose.Promise = global.Promise;
 
 app.use('/', routes);
 
