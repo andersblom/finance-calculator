@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', apiController.checkApiStatus);
 router.post('/user/create', 
-	userController.validateUserInput,
+	handleAsync(userController.validateUserInput),
 	handleAsync(userController.createNewUser),
 	handleAsync(authController.login),
 );

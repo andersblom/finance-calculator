@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 const User = mongoose.model('User');
 
-exports.validateUserInput = (req, res, next) => {
+exports.validateUserInput = async (req, res, next) => {
 	if (!req.body.email || !req.body.fullName || !req.body.password) {
 		const error = new Error('One or more fields were left out');
 		error.status = 400;
@@ -14,10 +14,14 @@ exports.validateUserInput = (req, res, next) => {
 		res.status(400);
 		return next(new Error('Email is not valid.'));
 	}
-	
-	//Check if user already exists
-	// ---
 
+	const alreadyExistingUser = await User.findOne({ email: req.body.email });
+	if (alreadyExistingUser !== null) {
+		const error = new Error('user already exists!');
+		error.status = 400;
+		return next(error);
+	}
+	
 	next();
 };
 
