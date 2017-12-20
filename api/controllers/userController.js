@@ -1,4 +1,8 @@
+const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
+
+const User = mongoose.model('User');
 
 exports.validateUserInput = (req, res, next) => {
 	if (!req.body.email || !req.body.fullName || !req.body.password) {
@@ -18,5 +22,26 @@ exports.validateUserInput = (req, res, next) => {
 };
 
 exports.createNewUser = async (req, res, next) => {
-	next();
+	const user = new User({
+		email: req.body.email,
+		password: req.body.password,
+		fullName: req.body.fullName
+	});
+
+	const salt = await bcrypt.genSalt(10);
+	const hash = await bcrypt.hash(user.password, salt);
+
+	user.password = hash;
+
+	await user.save(err => {
+		if (err) {
+			next(err);
+		} else {
+			res.status(201);
+			res.json({
+				message: 'User was created',
+				user: user
+			});
+		}
+	});
 };
