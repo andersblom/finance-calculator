@@ -17,6 +17,6 @@ exports.validateUserInput = (req, res, next) => {
 	next();
 };
 
-exports.createNewUser = (req, res, next) => {
+exports.createNewUser = async (req, res, next) => {
 	next();
 };

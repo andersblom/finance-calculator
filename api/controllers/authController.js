@@ -1,4 +1,4 @@
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
 	
 	// Send JWT 
 
