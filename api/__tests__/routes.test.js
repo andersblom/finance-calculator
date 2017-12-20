@@ -1,8 +1,19 @@
+process.env.NODE_ENV = 'test';
+
 const request = require('supertest');
+const mongoose = require('mongoose');
 const app = require('../app');
 
+const User = require('../models/User');
+
 beforeAll(() => {
-	process.env.NODE_ENV = 'test';
+	User.remove({}, err => {
+	});
+});
+
+afterEach(() => {
+	User.remove({}, err => {
+	});
 });
 
 describe('Test API status', () => {
@@ -25,10 +36,10 @@ const testUser = {
 describe('User functionality', () => {
 	test('It should create a user @ POST /user/create', () => {
 		return request(app).post('/user/create').send(testUser).then(res => {
-			expect(res.statusCode).toBe(200);
-			expect(res.body.fullName).toBe('Testy McTesterson');
-			expect(res.body.email).toBe('test@example.com');
-			expect(res.body.password).not.toBe('test');
+			expect(res.statusCode).toBe(201);
+			expect(res.body.user.email).toBe('test@example.com');
+			expect(res.body.user.password).not.toBe('test');
+			expect(res.body.user.userLevel).toBe(0);
 		});
 	});
 });

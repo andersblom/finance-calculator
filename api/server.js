@@ -1,9 +1,3 @@
-require('dotenv').config({
-	path: './.env',
-});
-require('./models/User');
-
-
 const env = process.env.ENVIRONMENT || 'production';
 process.env.NODE_ENV = env;
 const port = process.env.API_PORT || 8000;

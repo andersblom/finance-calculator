@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 
+require('../models/User');
+
 const User = mongoose.model('User');
 
 exports.validateUserInput = async (req, res, next) => {

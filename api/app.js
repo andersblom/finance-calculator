@@ -5,6 +5,10 @@ const morgan = require('morgan');
 const routes = require('./routes');
 const errorHandlers = require('./handlers/errors');
 
+require('dotenv').config({
+	path: './.env',
+});
+
 const app = express();
 
 if (process.env.NODE_ENV === 'dev') {
@@ -20,7 +24,7 @@ mongoose.connect(app.settings.env === 'test' ? process.env.TEST_MONGO_URL : proc
 	if (err) {
 		console.log('🖥  🛑 Error connecting to the database. ' + err);
 	} else {
-		console.log('db connected');
+		process.env.NODE_ENV === 'test' ? null : console.log('db connected');
 	}
 });
 mongoose.Promise = global.Promise;
