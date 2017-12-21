@@ -1,7 +1,6 @@
 process.env.NODE_ENV = 'test';
 
 const request = require('supertest');
-const mongoose = require('mongoose');
 const app = require('../app');
 
 const User = require('../models/User');
