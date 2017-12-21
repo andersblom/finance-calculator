@@ -10,6 +10,7 @@ router.get('/', apiController.checkApiStatus);
 
 router.post('/user/create', 
 	handleAsync(userController.validateUserInput),
+	handleAsync(userController.checkForExistingUser),
 	handleAsync(userController.createNewUser)
 );
 

@@ -16,7 +16,11 @@ exports.validateUserInput = async (req, res, next) => {
 		res.status(400);
 		return next(new Error('Email is not valid.'));
 	}
+	
+	next();
+};
 
+exports.checkForExistingUser = async (req, res, next) => {
 	const alreadyExistingUser = await User.findOne({ email: req.body.email });
 	if (alreadyExistingUser !== null) {
 		const error = new Error('user already exists!');
