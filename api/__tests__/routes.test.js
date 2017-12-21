@@ -6,23 +6,6 @@ const app = require('../app');
 
 const User = require('../models/User');
 
-beforeEach(() => {
-	User.remove({}, () => {
-	});
-	const alreadyExistingUser = new User({
-		fullName: 'iAlreadyExist',
-		email: 'ialreadyexist@example.com',
-		password: 'test',
-	});
-	alreadyExistingUser.save(() => {
-	});
-});
-
-afterEach(() => {
-	User.remove({}, () => {
-	});
-});
-
 describe('Test API status', () => {
 	test('It should be online, responding to a GET /', () => {
 		return request(app).get('/').then(res => {
@@ -41,6 +24,23 @@ const testUser = {
 };
 
 describe('User functionality', () => {
+	beforeEach(() => {
+		User.remove({}, () => {
+		});
+		const alreadyExistingUser = new User({
+			fullName: 'iAlreadyExist',
+			email: 'ialreadyexist@example.com',
+			password: 'test',
+		});
+		alreadyExistingUser.save(() => {
+		});
+	});
+	
+	afterEach(() => {
+		User.remove({}, () => {
+		});
+	});
+	
 	test('It should create a user @ POST /user/create', () => {
 		return request(app).post('/user/create').send(testUser).then(res => {
 			expect(res.statusCode).toBe(201);
