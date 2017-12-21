@@ -6,13 +6,20 @@ const app = require('../app');
 
 const User = require('../models/User');
 
-beforeAll(() => {
-	User.remove({}, err => {
+beforeEach(() => {
+	User.remove({}, () => {
+	});
+	const alreadyExistingUser = new User({
+		fullName: 'iAlreadyExist',
+		email: 'ialreadyexist@example.com',
+		password: 'test',
+	});
+	alreadyExistingUser.save(() => {
 	});
 });
 
 afterEach(() => {
-	User.remove({}, err => {
+	User.remove({}, () => {
 	});
 });
 
@@ -40,6 +47,15 @@ describe('User functionality', () => {
 			expect(res.body.user.email).toBe('test@example.com');
 			expect(res.body.user.password).not.toBe('test');
 			expect(res.body.user.userLevel).toBe(0);
+		});
+	});
+	test('Creating a duplicate user should throw an error', () => {
+		return request(app).post('/user/create').send({
+			fullName: 'Mr. Duplicate Email',
+			email: 'ialreadyexist@example.com',
+			password: 'thiswillfail',
+		}).then(res => {
+			expect(res.statusCode).toBe(400);
 		});
 	});
 });
