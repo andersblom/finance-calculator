@@ -25,6 +25,9 @@ const UserSchema = new mongoose.Schema({
 	userLevel: {
 		type: Number,
 		default: 0,
+	},
+	JWToken: {
+		type: String
 	}
 });
 
