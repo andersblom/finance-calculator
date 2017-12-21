@@ -13,7 +13,7 @@ exports.login = async (req, res, next) => {
 		error.status = 401; 
 		return next(error);
 	}
-
+	
 	const userPwIsCorrect = await bcrypt.compare(req.body.password, findUser.password)
 		.then(res => {
 			return res;
@@ -21,7 +21,7 @@ exports.login = async (req, res, next) => {
 	;
 	
 	if (!userPwIsCorrect) {
-		const error = new Error('Email and password does not match.');
+		const error = new Error('Password and email does not match.');
 		error.status = 401; 
 		return next(error);
 	}

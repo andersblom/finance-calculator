@@ -31,8 +31,8 @@ describe('User functionality', () => {
 			email: 'ialreadyexist@example.com',
 			password: 'test',
 		});
-		alreadyExistingUser.save(() => {
-		});
+		return request(app).post('/user/create')
+			.send(alreadyExistingUser);
 	});
 	
 	afterEach(() => {
@@ -48,6 +48,7 @@ describe('User functionality', () => {
 			expect(res.body.user.userLevel).toBe(0);
 		});
 	});
+
 	test('Creating a duplicate user should throw an error', () => {
 		return request(app).post('/user/create').send({
 			fullName: 'Mr. Duplicate Email',
@@ -56,5 +57,20 @@ describe('User functionality', () => {
 		}).then(res => {
 			expect(res.statusCode).toBe(400);
 		});
+	});
+	
+	test('It should log a user in with correct credentials', () => {
+		return request(app).post('/user/login')
+			.send({
+				'email': 'ialreadyexist@example.com',
+				'password': 'test',
+			})
+			.set('Content-Type', 'application/json')
+			.set('Accept', 'application/json')
+			.then(res => {
+				console.log(res.body);
+				expect(res.statusCode).toBe(200);
+				// Should expect a JWT too
+			});
 	});
 });
