@@ -22,7 +22,7 @@
     "validator": "^9.2.0"
   },
   "scripts": {
-    "start": "yarn start:client",
+    "start": "run-p start:client start:server",
     "start:server": "nodemon ./api/server.js",
     "start:client": "react-scripts start",
     "test:server": "jest --watchAll /api",
@@ -36,6 +36,7 @@
     "eslint-plugin-react": "^7.5.1",
     "jest": "^21",
     "nodemon": "^1.13.3",
+    "npm-run-all": "^4.1.2",
     "superagent": "^3.8.2",
     "supertest": "^3.0.0"
   }
