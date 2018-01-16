@@ -1,5 +1,5 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -11,8 +11,22 @@ import BudgetItems from '../../components/Worksheet/BudgetItems';
 import DisplayTotal from '../../components/Worksheet/DisplayTotal';
 
 import './WorksheetEditor.css';
+import { changeWorksheetTitle } from '../../actions/worksheetActions';
 
-class WorksheetEditor extends Component {
+type Props = {
+  worksheet: { items: Array<{
+    name: string,
+    amount: number,
+    expense: boolean,
+    id: string
+  }>, title: string },
+  changeWorksheetTitle: () => {},
+  addBudgetItem: () => {},
+  editBudgetItem: () => {},
+  deleteBudgetItem: () => {},
+}
+
+class WorksheetEditor extends Component<Props> {
   calculateTotal() {
     const { items } = this.props.worksheet;
     const expenses = items
@@ -44,14 +58,6 @@ class WorksheetEditor extends Component {
     );
   }
 }
-
-WorksheetEditor.propTypes = {
-  worksheet: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])).isRequired,
-  changeWorksheetTitle: PropTypes.func.isRequired,
-  addBudgetItem: PropTypes.func.isRequired,
-  editBudgetItem: PropTypes.func.isRequired,
-  deleteBudgetItem: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
   worksheet: state.worksheet,

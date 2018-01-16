@@ -1,10 +1,15 @@
+// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import './Header.css';
 
-const Header = (props) => {
+type Props = {
+  isLoggedIn: boolean
+}
+
+const Header = (props: Props) => {
   const { isLoggedIn } = props;
   return (
     <header>
