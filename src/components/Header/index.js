@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import logProps from '../../common/logProps';
 
 import './Header.css';
 
@@ -46,4 +47,4 @@ Header.propTypes = {
   isLoggedIn: PropTypes.bool,
 };
 
-export default Header;
+export default logProps(Header);
