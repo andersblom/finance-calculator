@@ -20,10 +20,10 @@ type Props = {
     expense: boolean,
     id: string
   }>, title: string },
-  changeWorksheetTitle: () => {},
-  addBudgetItem: () => {},
-  editBudgetItem: () => {},
-  deleteBudgetItem: () => {},
+  changeWorksheetTitle: Function,
+  addBudgetItem: Function,
+  editBudgetItem: Function,
+  deleteBudgetItem: Function,
 }
 
 class WorksheetEditor extends Component<Props> {
