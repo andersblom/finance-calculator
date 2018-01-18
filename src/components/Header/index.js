@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import logProps from '../../common/logProps';
+import { lifecycle } from 'recompose';
 
 import './Header.css';
 
@@ -43,8 +42,8 @@ Header.defaultProps = {
   isLoggedIn: false, // Should be false after css/markup is done
 };
 
-Header.propTypes = {
-  isLoggedIn: PropTypes.bool,
-};
-
-export default logProps(Header);
+export default lifecycle({
+  componentDidMount() {
+    console.log("Mounted Header");
+  }
+})(Header);
