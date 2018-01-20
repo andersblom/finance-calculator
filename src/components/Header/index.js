@@ -1,16 +1,15 @@
 // @flow
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { lifecycle } from 'recompose';
 
 import './Header.css';
 
 const Header = (
   {
-    isLoggedIn
+    isLoggedIn,
   }:{
     isLoggedIn: Boolean
-  }
+  },
 ) => (
   <header>
     <div className="app__logo">
